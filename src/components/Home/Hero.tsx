@@ -1,5 +1,6 @@
 import heroImage from "../../assets/images/HeroImg.svg";
 import { motion } from "framer-motion";
+import CountUp from "react-countup";
 
 export default function Hero() {
   return (
@@ -16,6 +17,28 @@ export default function Hero() {
         <button className="bg-cyan-950 text-white font-['Rubik'] text-xs w-60 p-3 hover:bg-white hover:text-gray-900 hover:border-1 hover:border-cyan-950 hover:cursor-pointer">
           Shop Now
         </button>
+        <div className="mt-3 flex flex-col items-center lg:flex-row lg:items-center">
+          <div className="flex flex-row justify-center ">
+            <div className="font-['Rubik'] flex flex-col p-4 border-r-1 border-gray-200">
+              <p className="font-bold text-xl text-gray-800">
+                <CountUp end={200} duration={2} />+
+              </p>
+              <p className="text-[10px] text-gray-400">International Brands</p>
+            </div>
+            <div className="font-['Rubik'] flex flex-col p-4">
+              <p className="font-bold text-xl text-gray-800">
+                <CountUp end={2000} duration={2} />+
+              </p>
+              <p className="text-[10px] text-gray-400">High-Quality Products</p>
+            </div>
+          </div>
+          <div className="font-['Rubik'] flex flex-col mt-1">
+            <p className="font-bold text-xl text-gray-800">
+              <CountUp end={30000} duration={2.5} separator="," />+
+            </p>
+            <p className="text-[10px] text-gray-400">Happy Customers</p>
+          </div>
+        </div>
       </motion.div>
       <motion.img
         src={heroImage}
