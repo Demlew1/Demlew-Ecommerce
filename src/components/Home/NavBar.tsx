@@ -1,9 +1,9 @@
 import Logo from "./Logo";
 import { FiGrid } from "react-icons/fi";
-import { FaSearch } from "react-icons/fa";
+// import { FaSearch } from "react-icons/fa";
 export default function NavBar() {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:gap-5 sm:justify-between m-3">
+    <div className="flex flex-col gap-5 sm:flex-row sm:gap-6 sm:justify-between m-3 sm:mt-6 sm:mx-3 md:mx-6 lg:mx-16">
       <div className="flex flex-row justify-center items-center sm:order-1">
         <Logo />
       </div>
@@ -44,11 +44,11 @@ export default function NavBar() {
       </div>
       <div className="self-center flex flex-row gap-2 items-center sm:order-2">
         <input
-          className="font-['Rubik'] text-gray-900 text-xs  border-1 w-60 sm:w-45 md:w-60 lg:w-70 xl:w-80  rounded-sm  border-gray-800 p-1 pr-2"
+          className="font-['Rubik'] text-gray-900 text-xs  border-1 w-60 sm:text-[10px] md:text-xs sm:w-45 md:w-60 lg:w-70 xl:w-80  rounded-sm  border-gray-800 p-1 pr-2"
           type="text"
           placeholder="Search products"
         />
-        <FaSearch className=" text-white bg-cyan-800 p-1 size-6 rounded-full flex items-center justify-center" />
+        {/* <FaSearch className=" text-white bg-cyan-800 p-1 size-6 rounded-full flex items-center justify-center" /> */}
       </div>
     </div>
   );
