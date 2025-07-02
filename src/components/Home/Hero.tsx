@@ -11,10 +11,15 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <p className="font-['Rubik'] w-70 sm:w-80 lg:w-100 text-gray-900 font-bold text-3xl text-center mx-3 mt-10 uppercase sm:text-4xl lg:text-5xl ">
+        <motion.p
+          className="font-['Rubik'] w-70 sm:w-80 lg:w-100 text-gray-900 font-bold text-3xl text-center mx-3 mt-10 uppercase sm:text-4xl lg:text-5xl "
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           Discover top quality products at unbeatable prices.
-        </p>
-        <button className="bg-cyan-950 text-white font-['Rubik'] text-xs w-60 p-3 hover:bg-white hover:text-gray-900 hover:border-1 hover:border-cyan-950 hover:cursor-pointer">
+        </motion.p>
+        <button className="bg-cyan-950 border-1 border-white text-white font-['Rubik'] text-sm w-60 p-3 hover:bg-white hover:text-gray-900 hover:border-1 hover:border-cyan-950 hover:cursor-pointer">
           Shop Now
         </button>
         <div className="mt-3 flex flex-col items-center lg:flex-row lg:items-center">

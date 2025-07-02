@@ -42,14 +42,25 @@ export default function NavBar() {
           </div>
         </div>
       </div>
-      <div className="self-center flex flex-row gap-2 items-center sm:order-2">
+      <div className="self-center flex flex-row gap-8 items-center sm:order-2">
+        <button className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950">
+          Home
+        </button>
+        <button className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950">
+          Products
+        </button>
+        <button className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950">
+          About us
+        </button>
+      </div>
+      {/* <div className="self-center flex flex-row gap-2 items-center sm:order-2">
         <input
           className="font-['Rubik'] text-gray-900 text-xs  border-1 w-60 sm:text-[10px] md:text-xs sm:w-45 md:w-60 lg:w-70 xl:w-80  rounded-sm  border-gray-800 p-1 pr-2"
           type="text"
           placeholder="Search products"
         />
         {/* <FaSearch className=" text-white bg-cyan-800 p-1 size-6 rounded-full flex items-center justify-center" /> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 }
