@@ -2,9 +2,9 @@ import NavBar from "../components/Home/NavBar";
 import SignUpAd from "../components/Home/SignUpAd";
 import searchIcon from "../assets/images/search.svg";
 import Menu from "../assets/images/menu.svg";
-import Filter from "../assets/images/filter.svg";
-import ProductCards from "../components/Home/ProductCards";
 
+import ProductCards from "../components/Home/ProductCards";
+import Categories from "../components/Home/categories";
 export default function Products() {
   return (
     <div>
@@ -13,7 +13,7 @@ export default function Products() {
       <div className="flex flex-col items-center justify-center gap-6">
         <div className="flex flex-row gap-2 items-center justify-center">
           <input
-            className="font-['Rubik'] text-xs border-1 border-cyan-950 p-1 rounded-sm mt-4 w-55 focus:outline-none"
+            className="font-['Rubik'] text-xs border-1 border-cyan-950 p-1 rounded-sm mt-4 w-55 sm:w-70 pl-2 focus:outline-none"
             type="text"
             placeholder="search products"
           />
@@ -23,19 +23,14 @@ export default function Products() {
             alt="search"
           />
         </div>
-        <div className="flex flex-row justify-between items-center w-full px-4 ">
-          <img className="size-5" src={Menu} alt="menu" />
-          <div className="flex flex-row gap-2 items-center justify-center">
-            <img className="size-6" src={Filter} alt="filter" />
-            <select className="font-['Rubik'] text-xs border-1 w-20 focus:outline-none p-0.5 rounded-sm ">
-              <option>Filter by</option>
-              <option>A-Z</option>
-              <option>expensive to low</option>
-            </select>
-          </div>
+        <div className="flex flex-row justify-between items-center w-full mt-4 px-6 ">
+          <img className="size-5 md:hidden" src={Menu} alt="menu" />
         </div>
       </div>
-      <ProductCards />
+      <div className="flex flex-row gap-4 xl:gap-2">
+        <Categories />
+        <ProductCards />
+      </div>
     </div>
   );
 }

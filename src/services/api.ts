@@ -21,3 +21,13 @@ export async function getAllProducts(): Promise<AllProducts[]> {
     throw new Error("Failed to fetch products");
   }
 }
+export async function getCategories(): Promise<string[]> {
+  try {
+    const response = await axios.get<string[]>(
+      "https://fakestoreapi.com/products/categories"
+    );
+    return response.data;
+  } catch {
+    throw new Error("failed to fetch categories");
+  }
+}
