@@ -3,6 +3,8 @@ import SignUpAd from "../components/Home/SignUpAd";
 import searchIcon from "../assets/images/search.svg";
 import Menu from "../assets/images/menu.svg";
 import Filter from "../assets/images/filter.svg";
+import ProductCards from "../components/Home/ProductCards";
+
 export default function Products() {
   return (
     <div>
@@ -21,16 +23,19 @@ export default function Products() {
             alt="search"
           />
         </div>
-        <div>
+        <div className="flex flex-row justify-between items-center w-full px-4 ">
           <img className="size-5" src={Menu} alt="menu" />
-          <div>
-            <img src={Filter} alt="filter" />
-            <select className="font-['Rubik'] text-xs w-30 focus:outline-none border-1 p-1 rounded-sm ">
+          <div className="flex flex-row gap-2 items-center justify-center">
+            <img className="size-6" src={Filter} alt="filter" />
+            <select className="font-['Rubik'] text-xs border-1 w-20 focus:outline-none p-0.5 rounded-sm ">
               <option>Filter by</option>
+              <option>A-Z</option>
+              <option>expensive to low</option>
             </select>
           </div>
         </div>
       </div>
+      <ProductCards />
     </div>
   );
 }
