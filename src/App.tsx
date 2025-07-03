@@ -1,12 +1,14 @@
 // import HomePage from "../src/pages/HomePage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Products from "./pages/Products";
+import { BrowserRouter as Router } from "react-router-dom";
+import RouterContent from "./components/Home/RouterContent";
 const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <HomePage /> */}
-      <Products />
+      <Router>
+        <RouterContent />
+      </Router>
     </QueryClientProvider>
   );
 }

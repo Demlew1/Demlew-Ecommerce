@@ -1,6 +1,5 @@
 import Logo from "./Logo";
-// import { FiGrid } from "react-icons/fi";
-// import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 export default function NavBar() {
   return (
     <div className="flex flex-col gap-5 sm:flex-row sm:gap-6 sm:justify-between m-3 sm:mt-6 sm:mx-3 md:mx-6 lg:mx-16">
@@ -8,10 +7,6 @@ export default function NavBar() {
         <Logo />
       </div>
       <div className="flex flex-row justify-between sm:gap-10 items-center sm:order-3">
-        {/* <div className="flex flex-row gap-2 items-center">
-          <FiGrid className="text-cyan-800 text-xl" />
-          <p className="font-['Kanit'] text-gray-900 text-md">Categories</p>
-        </div> */}
         <button className="font-['Kanit'] bg-cyan-950 text-gray-50 text-xs p-2 rounded-sm border-1 border-white hover:border-cyan-950 hover:text-gray-900 hover:bg-white cursor-pointer">
           sell on Demzon
         </button>
@@ -46,24 +41,25 @@ export default function NavBar() {
         </div>
       </div>
       <div className="self-center flex flex-row gap-8 items-center sm:order-2">
-        <button className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950">
+        <Link
+          to="/"
+          className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950"
+        >
           Home
-        </button>
-        <button className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950">
+        </Link>
+        <Link
+          to="products"
+          className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950"
+        >
           Products
-        </button>
-        <button className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950">
+        </Link>
+        <Link
+          to="aboutus"
+          className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950"
+        >
           About us
-        </button>
+        </Link>
       </div>
-      {/* <div className="self-center flex flex-row gap-2 items-center sm:order-2">
-        <input
-          className="font-['Rubik'] text-gray-900 text-xs  border-1 w-60 sm:text-[10px] md:text-xs sm:w-45 md:w-60 lg:w-70 xl:w-80  rounded-sm  border-gray-800 p-1 pr-2"
-          type="text"
-          placeholder="Search products"
-        />
-        {/* <FaSearch className=" text-white bg-cyan-800 p-1 size-6 rounded-full flex items-center justify-center" /> */}
-      {/* </div> */}
     </div>
   );
 }

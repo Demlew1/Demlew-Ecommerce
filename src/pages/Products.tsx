@@ -8,8 +8,6 @@ import Categories from "../components/Home/categories";
 export default function Products() {
   return (
     <div>
-      <SignUpAd />
-      <NavBar />
       <div className="flex flex-col items-center justify-center gap-6">
         <div className="flex flex-row gap-2 items-center justify-center">
           <input

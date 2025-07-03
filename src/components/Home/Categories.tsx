@@ -18,7 +18,10 @@ export default function Categories() {
     );
   console.log(categories);
   return (
-    <div className="hidden md:flex md:flex-col gap-2 h-full rounded-lg  shadow-lg p-4 shadow-cyan-900">
+    <div className="hidden  md:flex md:flex-col md:items-center gap-2 h-full rounded-lg  shadow-lg p-4 shadow-cyan-900">
+      <p className="font-['Kanit'] flex flex-col justify-center text-gray-950">
+        Categories
+      </p>
       {categories.map((category) => (
         <button
           key={category}

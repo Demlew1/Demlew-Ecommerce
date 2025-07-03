@@ -44,7 +44,7 @@ export default function ProductCards() {
             </figure>
             <div className="card-body items-center text-center flex flex-col gap-3 flex-1">
               <h2 className="card-title text-cyan-950 ">{product.title}</h2>
-              <p className="text-xs">{product.price}$</p>
+              <p className="text-sm text-red-800 ">{product.price}$</p>
               <div className="card-actions">
                 <button className="btn btn-primary bg-cyan-950 text-cyan-50 p-2 w-40 border-1 border-cyan-950 cursor-pointer hover:border-1 hover:border-cyan-950 hover:text-cyan-950 hover:bg-white  text-sm">
                   More details
