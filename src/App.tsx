@@ -1,8 +1,10 @@
-import HomePage from "../src/pages/HomePage";
+// import HomePage from "../src/pages/HomePage";
+import Products from "./pages/Products";
 function App() {
   return (
     <div>
-      <HomePage />
+      {/* <HomePage /> */}
+      <Products />
     </div>
   );
 }
