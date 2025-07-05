@@ -1,7 +1,7 @@
 import heroImage from "../../assets/images/HeroImg.svg";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
-
+import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <div className="flex flex-col items-center sm:flex-row sm:gap-6 lg:gap-16 sm:items-start sm:justify-center">
@@ -19,9 +19,12 @@ export default function Hero() {
         >
           Discover top quality products at unbeatable prices.
         </motion.p>
-        <button className="bg-cyan-950 border-1 border-white text-white font-['Rubik'] text-sm w-60 p-3 hover:bg-white hover:text-gray-900 hover:border-1 hover:border-cyan-950 hover:cursor-pointer">
+        <Link
+          to="products"
+          className="bg-cyan-950 flex flex-row items-center justify-center border-1 border-white text-white font-['Rubik'] text-sm w-60 p-3 hover:bg-white hover:text-gray-900 hover:border-1 hover:border-cyan-950 hover:cursor-pointer"
+        >
           Shop Now
-        </button>
+        </Link>
         <div className="mt-3 flex flex-col items-center lg:flex-row lg:items-center">
           <div className="flex flex-row justify-center ">
             <div className="font-['Rubik'] flex flex-col p-4 border-r-1 border-gray-200">

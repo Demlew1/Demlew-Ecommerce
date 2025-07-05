@@ -1,19 +1,8 @@
 import axios from "axios";
-type AllProducts = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-};
-export async function getAllProducts(): Promise<AllProducts[]> {
+import type { Product } from "../types/product";
+export async function getAllProducts(): Promise<Product[]> {
   try {
-    const response = await axios.get<AllProducts[]>(
+    const response = await axios.get<Product[]>(
       "https://fakestoreapi.com/products"
     );
     return response.data;

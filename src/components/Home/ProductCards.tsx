@@ -1,15 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../../services/api";
 import Filter from "../../assets/images/filter.svg";
+import useProducts from "../../hooks/useProducts";
 export default function ProductCards() {
-  const {
-    data: products,
-    isPending,
-    error,
-  } = useQuery({
-    queryKey: ["Product"],
-    queryFn: getAllProducts,
-  });
+  const { data: products, isPending, error } = useProducts();
   if (isPending)
     return <p className="font-['Kanit'] text-center mt-20 ">Loading...</p>;
   if (error)

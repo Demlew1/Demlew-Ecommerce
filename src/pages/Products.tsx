@@ -1,5 +1,3 @@
-import NavBar from "../components/Home/NavBar";
-import SignUpAd from "../components/Home/SignUpAd";
 import searchIcon from "../assets/images/search.svg";
 import Menu from "../assets/images/menu.svg";
 
