@@ -2,7 +2,7 @@ import searchIcon from "../assets/images/search.svg";
 import Menu from "../assets/images/menu.svg";
 
 import ProductCards from "../components/Home/ProductCards";
-import Categories from "../components/Home/categories";
+import Categories from "../components/Home/Categories";
 export default function Products() {
   return (
     <div>
