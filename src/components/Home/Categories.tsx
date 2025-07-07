@@ -1,14 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { getCategories } from "../../services/api";
+import useCategories from "../../hooks/useCategories";
 export default function Categories() {
-  const {
-    data: categories,
-    isPending,
-    error,
-  } = useQuery({
-    queryKey: ["category"],
-    queryFn: getCategories,
-  });
+  const { data: categories, isPending, error } = useCategories();
   if (isPending) return <p className="font-['Kanit'] text-center mt-20 "></p>;
   if (error)
     return (
