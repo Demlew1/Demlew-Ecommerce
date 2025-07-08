@@ -53,12 +53,6 @@ export default function NavBar() {
         >
           Products
         </Link>
-        <Link
-          to="aboutus"
-          className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950"
-        >
-          About us
-        </Link>
       </div>
     </div>
   );
