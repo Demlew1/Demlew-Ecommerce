@@ -75,7 +75,7 @@ export default function HomeProducts() {
       <div className="relative w-full max-w-6xl">
         <button
           onClick={prevProducts}
-          className="flex items-center justify-center border-1 border-cyan-950 text-cyan-950 p-2 rounded-full hover:bg-cyan-800 z-10 
+          className="flex items-center justify-center border-1 border-cyan-950 text-cyan-950 p-2 rounded-full cursor-pointer hover:bg-cyan-950 hover:text-white z-10 
                    absolute left-0 lg:left-16 xl:left-32 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4
                    w-8 h-8 md:w-10 md:h-10"
           aria-label="Previous products"
@@ -125,7 +125,7 @@ export default function HomeProducts() {
 
         <button
           onClick={nextProducts}
-          className="flex items-center justify-center border-1 border-cyan-950 text-cyan-950 p-2 rounded-full hover:bg-cyan-800 z-10 
+          className="flex items-center justify-center border-1 border-cyan-950 text-cyan-950 p-2 rounded-full cursor-pointer hover:bg-cyan-950 hover:text-white z-10 
                    absolute right-0 lg:right-16 xl:right-32 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4
                    w-8 h-8 md:w-10 md:h-10"
           aria-label="Next products"

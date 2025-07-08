@@ -23,7 +23,9 @@ export default function HomeCategories() {
     );
   return (
     <div className="flex flex-col items-center justify-center">
-      <p className="font-['Rubik'] font-bold text-cyan-950 ">CATEGORIES</p>
+      <p className="font-['Rubik'] text-2xl font-bold text-cyan-950 ">
+        CATEGORIES
+      </p>
       <div className="flex flex-row items-center justify-center gap-6 mt-8 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24 flex-wrap">
         {categories.map((category) => (
           <button key={category} className="flex flex-col gap-2 items-center">

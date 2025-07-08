@@ -22,7 +22,7 @@ export default function Hero() {
           </motion.p>
           <Link
             to="products"
-            className="bg-cyan-950 flex flex-row items-center justify-center border-1 border-white text-white font-['Rubik'] text-sm w-60 p-3 hover:bg-white hover:text-gray-900 hover:border-1 hover:border-cyan-950 hover:cursor-pointer"
+            className="bg-cyan-950 flex flex-row items-center justify-center border-1 border-white text-white font-['Rubik'] text-sm w-60 p-3 hover:bg-white hover:text-gray-900 hover:border-1 hover:border-cyan-950 hover:cursor-pointer transition duration-200"
           >
             Shop Now
           </Link>

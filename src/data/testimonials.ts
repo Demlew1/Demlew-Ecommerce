@@ -1,0 +1,51 @@
+import type { Testimonial } from "../types/testimonial";
+export const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Sara Jay",
+    role: "Traveller",
+    image: "https://i.pravatar.cc/150?img=1",
+    rating: 4,
+    text: "Before we define any approach, we need to define the brands overall goal. We then need to dive.",
+  },
+  {
+    id: 2,
+    name: "Cristian Daniel",
+    role: "Traveller",
+    image: "https://i.pravatar.cc/150?img=2",
+    rating: 5,
+    text: "Before we define any approach, we need to define the brands overall goal. We then need to dive.",
+  },
+  {
+    id: 3,
+    name: "Kausar Hasan",
+    role: "Traveller",
+    image: "https://i.pravatar.cc/150?img=3",
+    rating: 5,
+    text: "Before we define any approach, we need to define the brands overall goal. We then need to dive.",
+  },
+  {
+    id: 4,
+    name: "John Doe",
+    role: "Traveller",
+    image: "https://i.pravatar.cc/150?img=4",
+    rating: 5,
+    text: "Before we define any approach, we need to define the brands overall goal. We then need to dive.",
+  },
+  {
+    id: 5,
+    name: "Emma Watson",
+    role: "Traveller",
+    image: "https://i.pravatar.cc/150?img=5",
+    rating: 4,
+    text: "Creating a strong visual identity helped our business stand out in a crowded market. The approach was methodical and effective.",
+  },
+  {
+    id: 6,
+    name: "Michael Chen",
+    role: "Traveller",
+    image: "https://i.pravatar.cc/150?img=6",
+    rating: 3,
+    text: "The branding strategy developed for our startup was instrumental in our early success. Highly recommended.",
+  },
+];
