@@ -3,7 +3,7 @@ import useProducts from "../../hooks/useProducts";
 import { useNavigate } from "react-router-dom";
 export default function ProductCards() {
   const navigate = useNavigate();
-  const { data: products, isPending, error } = useProducts();
+  const { data: products = [], isPending, error } = useProducts();
   if (isPending)
     return <p className="font-['Kanit'] text-center mt-20 ">Loading...</p>;
   if (error)

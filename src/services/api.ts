@@ -8,7 +8,8 @@ export async function getAllProducts(): Promise<Product[]> {
       "https://api.escuelajs.co/api/v1/products"
     );
     return response.data;
-  } catch {
+  } catch (error) {
+    console.log(error);
     throw new Error("Failed to fetch products");
   }
 }
@@ -18,7 +19,8 @@ export async function getCategories(): Promise<Categories[]> {
       "https://api.escuelajs.co/api/v1/categories"
     );
     return response.data;
-  } catch {
+  } catch (error) {
+    console.log(error);
     throw new Error("failed to fetch categories");
   }
 }
@@ -28,7 +30,8 @@ export async function getSingleProduct(id: number): Promise<singleProduct> {
       `https://api.escuelajs.co/api/v1/products/${id}`
     );
     return response.data;
-  } catch {
+  } catch (error) {
+    console.log(error);
     throw new Error("failed to fetch product details");
   }
 }
