@@ -95,13 +95,13 @@ export default function HomeProducts() {
                   animate="animate"
                   exit="exit"
                   layout
-                  className="card bg-base-100 flex-shrink-0 w-48 sm:w-56 md:w-60 shadow-sm font-['Rubik'] flex flex-col gap-2 p-2 border-1 border-cyan-950 rounded-lg"
+                  className="card bg-base-100 flex-shrink-0 w-48 sm:w-56 md:w-60 shadow-sm font-['Rubik'] flex flex-col gap-2 pb-2 border-1 border-cyan-950 rounded-lg"
                 >
-                  <figure className="px-6 md:px-10 pt-6 md:pt-10">
+                  <figure className="">
                     <motion.img
-                      src={product.image}
+                      src={product.images[0]}
                       alt={product.title}
-                      className="size-32 md:size-40 object-contain"
+                      className="w-full object-contain rounded-t-md"
                       whileHover={{ scale: 1.05 }}
                     />
                   </figure>

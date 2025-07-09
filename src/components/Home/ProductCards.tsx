@@ -1,6 +1,8 @@
 import Filter from "../../assets/images/filter.svg";
 import useProducts from "../../hooks/useProducts";
+import { useNavigate } from "react-router-dom";
 export default function ProductCards() {
+  const navigate = useNavigate();
   const { data: products, isPending, error } = useProducts();
   if (isPending)
     return <p className="font-['Kanit'] text-center mt-20 ">Loading...</p>;
@@ -10,6 +12,10 @@ export default function ProductCards() {
         {error.message}
       </p>
     );
+  const productsWithImages = products.filter(
+    (product) =>
+      product.images && product.images.length > 0 && product.images[0]
+  );
   console.log(products);
   return (
     <div className="flex flex-col gap-1 ">
@@ -26,19 +32,30 @@ export default function ProductCards() {
         </select>
       </div>
       <div className="flex flex-row justify-center items-center gap-6 mt-2 flex-wrap">
-        {products.map((product) => (
+        {productsWithImages.map((product) => (
           <div
             key={product.id}
-            className="card bg-base-100 w-60 shadow-sm font-['Rubik'] flex flex-col gap-2 p-2 border-1 border-cyan-950 rounded-lg "
+            className="card bg-base-100 w-60 shadow-sm font-['Rubik'] flex flex-col gap-2 pb-2 border-1 border-cyan-950 rounded-lg "
           >
-            <figure className="px-10 pt-10">
-              <img src={product.images[0]} alt="Shoes" className=" size-40" />
+            <figure className="">
+              <img
+                src={product.images[0]}
+                alt="Shoes"
+                className=" w-full rounded-t-lg"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    "src/assets/images/noImage.jpg";
+                }}
+              />
             </figure>
             <div className="card-body items-center text-center flex flex-col gap-3 flex-1">
-              <h2 className="card-title text-cyan-950 ">{product.title}</h2>
+              <h2 className="card-title text-cyan-950 px-2">{product.title}</h2>
               <p className="text-sm text-red-800 ">{product.price}$</p>
               <div className="card-actions">
-                <button className="btn btn-primary bg-cyan-950 text-cyan-50 p-2 w-40 border-1 border-cyan-950 cursor-pointer hover:border-1 hover:border-cyan-950 hover:text-cyan-950 hover:bg-white  text-sm">
+                <button
+                  onClick={() => navigate(`/products/${product.id}`)}
+                  className="btn btn-primary bg-cyan-950 text-cyan-50 p-2 w-40 border-1 border-cyan-950 cursor-pointer hover:border-1 hover:border-cyan-950 hover:text-cyan-950 hover:bg-white  text-sm"
+                >
                   More details
                 </button>
               </div>

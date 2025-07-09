@@ -1,6 +1,7 @@
 import axios from "axios";
 import type { Product } from "../types/product";
 import type { Categories } from "../types/categories";
+import type { singleProduct } from "../types/singleProduct";
 export async function getAllProducts(): Promise<Product[]> {
   try {
     const response = await axios.get<Product[]>(
@@ -19,5 +20,15 @@ export async function getCategories(): Promise<Categories[]> {
     return response.data;
   } catch {
     throw new Error("failed to fetch categories");
+  }
+}
+export async function getSingleProduct(id: number): Promise<singleProduct> {
+  try {
+    const response = await axios.get<singleProduct>(
+      `https://api.escuelajs.co/api/v1/products/${id}`
+    );
+    return response.data;
+  } catch {
+    throw new Error("failed to fetch product details");
   }
 }
