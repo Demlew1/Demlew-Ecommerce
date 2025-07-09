@@ -16,10 +16,10 @@ export default function Categories() {
       </p>
       {categories.map((category) => (
         <button
-          key={category}
+          key={category.id}
           className="font-['Rubik'] w-50 bg-cyan-950 text-cyan-50 text-sm p-2 border-1 border-cyan-950 hover:border-cyan-950 hover:bg-white hover:text-gray-950 cursor-pointer"
         >
-          {category}
+          {category.name}
         </button>
       ))}
     </div>
