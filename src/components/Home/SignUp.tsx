@@ -1,5 +1,5 @@
-import Logo from "./Logo";
-import SignUpForm from "./SignInForm";
+import Logo from "../Home/Logo";
+import SignUpForm from "../Home/signUpForm";
 import { Link } from "react-router-dom";
 function SignUp() {
   return (
@@ -10,12 +10,12 @@ function SignUp() {
           <p className="text-gray-600 mt-3 text-sm">Create a new account</p>
         </div>
         <SignUpForm />
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-700">
+        <div className="mt-6">
+          <p className="text-xs text-center text-gray-600">
             Already have an account?
             <Link
               to="/signin"
-              className="font-medium text-cyan-900 hover:text-cyan-800 cursor-pointer"
+              className="font-medium ml-1 text-cyan-900 hover:text-cyan-800 cursor-pointer"
             >
               Sign in
             </Link>
