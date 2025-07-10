@@ -1,50 +1,63 @@
-import Logo from "./Logo";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 import heart from "../../assets/images/heart.png";
 import cart from "../../assets/images/cart2.png";
 import account from "../../assets/images/account.png";
+
 export default function NavBar() {
   return (
-    <div className="flex flex-col gap-5 sm:flex-row sm:gap-6 sm:justify-between m-3 sm:mt-6 sm:mx-3 md:mx-6 lg:mx-16">
-      <div className="flex flex-row justify-center items-center sm:order-1">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-4 py-4 sm:px-8 lg:px-20 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="flex justify-center sm:justify-start">
         <Logo />
       </div>
-      <div className="flex flex-row justify-between sm:gap-10 items-center sm:order-3">
-        <button className="font-['Kanit'] bg-cyan-950 text-gray-50 text-xs p-2 rounded-sm border-1 border-white hover:border-cyan-950 hover:text-gray-900 hover:bg-white cursor-pointer">
-          sell on Demzon
-        </button>
-        <div className="flex flex-row gap-4">
-          <div className="relative">
-            <img src={heart} alt="heart" className="size-5 " />
-            <p className="flex flex-row items-center justify-center text-gray-100 size-4 text-[10px] bg-amber-950 rounded-full absolute top-[-10px] right-[-14px]">
-              0
-            </p>
-          </div>
-          <div className="relative">
-            <img src={cart} alt="cart" className="size-5 " />
-            <p className="flex flex-row items-center justify-center text-gray-100 size-4 text-[10px] bg-cyan-900 rounded-full absolute top-[-10px] right-[-14px]">
-              0
-            </p>
-          </div>
-          <div>
-            <img src={account} alt="account" className="size-5" />
-          </div>
-        </div>
-      </div>
-      <div className="self-center flex flex-row gap-8 items-center sm:order-2">
+      <div className="flex gap-8 sm:order-2 text-base">
         <Link
           to="/"
-          className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950"
+          className="font-['Kanit'] text-cyan-950 border-b-2 border-transparent hover:border-cyan-950 transition duration-200"
         >
           Home
         </Link>
         <Link
-          to="products"
-          className="font-['Kanit'] hover:cursor-pointer text-sm border-b-2 border-white hover:border-b-2 hover:border-cyan-950 transition delay-8 text-cyan-950"
+          to="/products"
+          className="font-['Kanit'] text-cyan-950 border-b-2 border-transparent hover:border-cyan-950 transition duration-200"
         >
           Products
         </Link>
       </div>
-    </div>
+      <div className="flex items-center gap-6 sm:order-3">
+        <button className="font-['Kanit'] text-sm px-4 py-2 bg-cyan-950 text-white rounded hover:bg-white hover:text-cyan-950 border border-cyan-950 transition-all duration-200">
+          Sell on Demzon
+        </button>
+        <div className="flex items-center gap-5">
+          <div className="relative group">
+            <img
+              src={heart}
+              alt="Wishlist"
+              className="w-6 h-6 cursor-pointer transition-transform group-hover:scale-110"
+            />
+            <span className="absolute -top-2 -right-3 bg-amber-900 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
+              0
+            </span>
+          </div>
+          <div className="relative group">
+            <img
+              src={cart}
+              alt="Cart"
+              className="w-6 h-6 cursor-pointer transition-transform group-hover:scale-110"
+            />
+            <span className="absolute -top-2 -right-3 bg-cyan-900 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
+              0
+            </span>
+          </div>
+          <div className="group">
+            <img
+              src={account}
+              alt="Account"
+              className="w-6 h-6 cursor-pointer transition-transform group-hover:scale-110"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }

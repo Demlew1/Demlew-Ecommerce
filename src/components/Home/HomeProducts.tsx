@@ -3,12 +3,12 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import useProducts from "../../hooks/useProducts";
 import type { Variants, Transition } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
 export default function HomeProducts() {
   const { data: products = [], isPending, error } = useProducts();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
-
+  const navigate = useNavigate();
   if (isPending)
     return <p className="font-['Kanit'] text-center mt-20">Loading...</p>;
   if (error)
@@ -109,6 +109,7 @@ export default function HomeProducts() {
                     <p className="text-sm text-red-800">{product.price}$</p>
                     <div className="card-actions">
                       <motion.button
+                        onClick={() => navigate(`products/${product.id}`)}
                         className="btn btn-primary bg-cyan-950 text-cyan-50 p-2 w-32 md:w-40 border-1 border-cyan-950 cursor-pointer hover:border-1 hover:border-cyan-950 hover:text-cyan-950 hover:bg-white text-xs md:text-sm"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

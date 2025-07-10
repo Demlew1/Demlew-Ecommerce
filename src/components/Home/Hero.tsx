@@ -13,7 +13,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.p
-            className="font-['Rubik'] w-70 sm:w-80 lg:w-100 text-gray-900 font-bold text-3xl text-center mx-3 mt-10 uppercase sm:text-4xl lg:text-5xl "
+            className="font-['Rubik'] w-70 sm:w-80 lg:w-100 text-gray-900 font-bold text-3xl text-center mx-3 mt-30 uppercase sm:text-4xl lg:text-5xl "
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}

@@ -16,7 +16,7 @@ export default function SingleProduct() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="flex justify-center items-center h-[60vh]"
+        className="flex justify-center items-center  h-[60vh]"
       >
         <div className="animate-pulse flex flex-col items-center gap-4">
           <div className="w-32 h-32 bg-gray-200 rounded-full"></div>
@@ -57,7 +57,7 @@ export default function SingleProduct() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="font-['Rubik'] flex flex-col sm:flex-row gap-8 items-center px-4 sm:px-8 lg:px-16 py-12 max-w-7xl mx-auto"
+      className="font-['Rubik'] flex flex-col sm:flex-row gap-8 mt-10 items-center px-4 sm:px-8 lg:px-16 py-12 max-w-7xl mx-auto"
     >
       <motion.div
         whileHover={{ scale: 1.01 }}
