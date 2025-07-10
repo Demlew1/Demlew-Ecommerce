@@ -9,27 +9,42 @@ export default function SingleProduct() {
   const { id } = useParams<{ id: string }>();
   const productId = parseInt(id ?? "0");
   const { data: singleProduct, isPending, error } = useSingleProduct(productId);
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState<boolean>(false);
 
   if (isPending)
     return (
-      <p className="font-['Kanit'] text-center mt-20 animate-pulse">
-        Loading...
-      </p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="flex justify-center items-center h-[60vh]"
+      >
+        <div className="animate-pulse flex flex-col items-center gap-4">
+          <div className="w-32 h-32 bg-gray-200 rounded-full"></div>
+          <div className="h-4 bg-gray-200 rounded w-48"></div>
+        </div>
+      </motion.div>
     );
 
   if (error)
     return (
-      <p className="font-['Kanit'] text-center mt-20 text-red-500">
+      <motion.p
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="font-['Kanit'] text-center mt-20 text-red-500"
+      >
         {error.message}
-      </p>
+      </motion.p>
     );
 
   if (!singleProduct || !singleProduct.images?.length) {
     return (
-      <p className="text-center mt-20 text-gray-500">
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="text-center mt-20"
+      >
         No product images available.
-      </p>
+      </motion.p>
     );
   }
 
@@ -39,70 +54,92 @@ export default function SingleProduct() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="font-['Rubik'] flex flex-col sm:flex-row gap-4 lg:gap-12 items-center m-2 lg:mx-24 xl:mx-40 mt-14"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="font-['Rubik'] flex flex-col sm:flex-row gap-8 items-center px-4 sm:px-8 lg:px-16 py-12 max-w-7xl mx-auto"
     >
-      {/* Image Section */}
-      <div className="w-full sm:w-1/2 space-y-2">
-        <motion.img
-          whileHover={{ scale: 1.05 }}
-          className="rounded-xl w-full object-cover"
-          src={singleProduct.images[0]}
-          alt={singleProduct.title}
-        />
-        <div className="flex gap-2 justify-center">
-          <img
-            className="w-1/2 rounded-lg"
-            src={singleProduct.images[1]}
-            alt="thumb1"
-          />
-          <img
-            className="w-1/2 rounded-lg"
-            src={singleProduct.images[2]}
-            alt="thumb2"
-          />
-        </div>
-      </div>
-
-      {/* Details Section */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2 }}
-        className="flex flex-col items-center gap-4 xl:gap-6 p-4 xl:p-8 border border-cyan-900 shadow-md rounded-2xl bg-white"
+        whileHover={{ scale: 1.01 }}
+        className="w-full sm:w-1/2 lg:w-2/5 space-y-4"
       >
-        <h1 className="text-center text-2xl xl:text-4xl font-bold text-cyan-900">
-          {singleProduct.title}
-        </h1>
+        <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-3 border border-gray-100">
+          <motion.img
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="w-full h-64 md:h-80 lg:h-96 object-contain rounded-lg"
+            src={singleProduct.images[0]}
+            alt={singleProduct.title}
+          />
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={likeProducts}
+            className="absolute top-4 right-4 bg-white/80 p-2 rounded-full shadow-lg backdrop-blur-sm"
+          >
+            <motion.img
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              src={like ? liked : heart}
+              alt="heart"
+              className="size-6 transition-all duration-300 hover:scale-110"
+            />
+          </motion.button>
+        </div>
 
-        <div className="text-center">
-          <p className="text-cyan-800 text-lg mb-1">Description:</p>
-          <p className="font-['Montserrat'] text-sm text-gray-600 max-w-xs">
+        <div className="flex gap-3">
+          {singleProduct.images.slice(0, 3).map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index + 0.3 }}
+              className="cursor-pointer w-1/3 h-20 md:h-28 rounded-lg overflow-hidden border-2 border-transparent hover:border-cyan-300 transition-all"
+            >
+              <img
+                className="w-full h-full object-cover hover:scale-105 transition-transform"
+                src={image}
+                alt={`Thumbnail ${index + 1}`}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ x: 20, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="w-full sm:w-1/2 lg:w-3/5 bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100"
+      >
+        <motion.h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          {singleProduct.title}
+        </motion.h1>
+
+        <motion.div className="mb-6">
+          <p className="text-gray-700 font-medium md:text-lg mb-2">
+            Description
+          </p>
+          <p className="font-['Montserrat'] text-gray-600 leading-relaxed">
             {singleProduct.description}
           </p>
-        </div>
+        </motion.div>
 
-        <p className="text-lg font-semibold text-red-800">
-          Price: ${singleProduct.price}
-        </p>
+        <motion.div className="mb-8 p-4 bg-gray-50 rounded-xl">
+          <p className="text-3xl font-bold text-cyan-700">
+            ${singleProduct.price}
+            <span className="text-sm text-gray-500 ml-1">USD</span>
+          </p>
+        </motion.div>
 
         <motion.button
-          whileTap={{ scale: 0.95 }}
-          className="bg-cyan-900 text-white px-6 py-2 rounded-lg hover:bg-cyan-700 transition-colors text-sm md:text-lg"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full py-3 px-6 rounded-xl font-medium text-white bg-cyan-900 hover:bg-cyan-800 shadow-md transition-all"
         >
           Add To Cart
         </motion.button>
-
-        <motion.img
-          whileTap={{ scale: 1.2 }}
-          whileHover={{ rotate: [0, -10, 10, 0] }}
-          onClick={likeProducts}
-          src={like ? liked : heart}
-          alt="heart"
-          className="w-6 h-6 cursor-pointer"
-        />
       </motion.div>
     </motion.div>
   );
