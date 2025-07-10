@@ -4,7 +4,8 @@ import Products from "./pages/Products";
 import type { RouteObject } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SingleProduct from "./components/Home/SingleProduct";
-import SignUp from "./components/Home/signUp";
+import SignUp from "./pages/SignUp";
+import SellProducts from "./pages/SellProducts";
 export const routesConfig: RouteObject[] = [
   {
     path: "/",
@@ -31,5 +32,9 @@ export const routesConfig: RouteObject[] = [
   {
     path: "signup",
     element: <SignUp />,
+  },
+  {
+    path: "/sell",
+    element: <SellProducts />,
   },
 ];

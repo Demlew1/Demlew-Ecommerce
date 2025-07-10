@@ -4,7 +4,6 @@ import heart from "../../assets/images/heart.png";
 import cart from "../../assets/images/cart2.png";
 import account from "../../assets/images/account.png";
 import SignUpAd from "./SignUpAd";
-
 export default function NavBar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -28,9 +27,12 @@ export default function NavBar() {
           </Link>
         </div>
         <div className="flex items-center gap-6 sm:order-3">
-          <button className="font-['Kanit'] text-sm px-4 py-2 bg-cyan-950 text-white rounded hover:bg-white hover:text-cyan-950 border border-cyan-950 transition-all duration-200">
+          <Link
+            to="/sell"
+            className="font-['Kanit'] text-sm px-4 py-2 bg-cyan-950 text-white rounded hover:bg-white hover:text-cyan-950 border border-cyan-950 transition-all duration-200"
+          >
             Sell on Demzon
-          </button>
+          </Link>
           <div className="flex items-center gap-5">
             <div className="relative group">
               <img
