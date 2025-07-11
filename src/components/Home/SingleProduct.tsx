@@ -4,13 +4,11 @@ import heart from "../../assets/images/heart.png";
 import liked from "../../assets/images/liked.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
 export default function SingleProduct() {
   const { id } = useParams<{ id: string }>();
   const productId = parseInt(id ?? "0");
   const { data: singleProduct, isPending, error } = useSingleProduct(productId);
   const [like, setLike] = useState<boolean>(false);
-
   if (isPending)
     return (
       <motion.div
@@ -24,7 +22,6 @@ export default function SingleProduct() {
         </div>
       </motion.div>
     );
-
   if (error)
     return (
       <motion.p
@@ -35,7 +32,6 @@ export default function SingleProduct() {
         {error.message}
       </motion.p>
     );
-
   if (!singleProduct || !singleProduct.images?.length) {
     return (
       <motion.p
@@ -47,11 +43,9 @@ export default function SingleProduct() {
       </motion.p>
     );
   }
-
   function likeProducts() {
     setLike(!like);
   }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -116,7 +110,6 @@ export default function SingleProduct() {
         <motion.h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
           {singleProduct.title}
         </motion.h1>
-
         <motion.div className="mb-6">
           <p className="text-gray-700 font-medium md:text-lg mb-2">
             Description
@@ -132,7 +125,6 @@ export default function SingleProduct() {
             <span className="text-sm text-gray-500 ml-1">USD</span>
           </p>
         </motion.div>
-
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

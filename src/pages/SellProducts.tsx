@@ -18,7 +18,7 @@ export default function SellProducts() {
               type="text"
               id="title"
               name="title"
-              className="w-full font-['Montserrat'] px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none"
+              className="w-full font-['Montserrat'] px-4 py-2 border border-gray-300 rounded-md text-xs sm:text-sm focus:outline-none"
               placeholder="e.g. Wireless Bluetooth Headphones"
               required
             />
@@ -52,7 +52,7 @@ export default function SellProducts() {
               id="description"
               name="description"
               // rows="4"
-              className="w-full font-['Montserrat'] px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none"
+              className="w-full font-['Montserrat'] px-4 py-2 border border-gray-300 rounded-md text-xs sm:text-sm focus:outline-none"
               placeholder="Describe your product in detail..."
               required
             ></textarea>
