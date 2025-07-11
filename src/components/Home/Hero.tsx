@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 import { Link } from "react-router-dom";
 export default function Hero() {
   return (
-    <div className={`flex flex-col items-center  `}>
+    <div className="flex flex-col items-center mt-24 sm:mt-10 mb-4 md:mb-8">
       <div className="flex flex-col items-center sm:flex-row sm:gap-6 lg:gap-16 sm:items-start sm:justify-center">
         <motion.div
           className="flex flex-col gap-5 justify-center items-center"
