@@ -2,6 +2,7 @@ import searchIcon from "../assets/images/search.svg";
 import Menu from "../assets/images/menu.svg";
 import ProductCards from "../components/Home/ProductCards";
 import Categories from "../components/Home/Categories";
+
 export default function Products() {
   return (
     <div>
@@ -16,7 +17,7 @@ export default function Products() {
             placeholder="search products"
           />
           <img
-            className="size-6 p-1 rounded-full flex items-center justify-center border-1 border-emerald-900"
+            className="size-6 p-1 rounded-full flex items-center justify-center border-1 border-emerald-900 cursor-pointer"
             src={searchIcon}
             alt="search"
           />
