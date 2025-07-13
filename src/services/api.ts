@@ -41,3 +41,14 @@ export async function getSingleProduct(id: number): Promise<singleProduct> {
     throw new Error("failed to fetch product details");
   }
 }
+export async function filterByCategory(categoryId: number): Promise<Product[]> {
+  try {
+    const response = await axios.get<Product[]>(
+      `https://api.escuelajs.co/api/v1/categories/${categoryId}/products`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Failed to fetch products for category ${categoryId}`);
+  }
+}

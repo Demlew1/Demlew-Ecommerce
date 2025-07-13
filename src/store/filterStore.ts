@@ -1,12 +1,10 @@
 import { create } from "zustand";
-interface categoryStore {
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
+interface CategoryStore {
+  selectedCategoryId: number | null;
+  setSelectedCategoryId: (id: number | null) => void;
 }
-export const useFilterStore = create<categoryStore>((set) => ({
-  selectedCategory: "all",
-  setSelectedCategory: (category) =>
-    set({
-      selectedCategory: category,
-    }),
+
+export const useFilterStore = create<CategoryStore>((set) => ({
+  selectedCategoryId: null,
+  setSelectedCategoryId: (id) => set({ selectedCategoryId: id }),
 }));
