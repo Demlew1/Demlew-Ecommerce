@@ -1,9 +1,11 @@
 import Filter from "../../assets/images/filter.svg";
 import useProducts from "../../hooks/useProducts";
 import { useNavigate } from "react-router-dom";
+import { useSearchStore } from "../../store/searchStore";
 export default function ProductCards() {
+  const { searchText } = useSearchStore();
   const navigate = useNavigate();
-  const { data: products = [], isPending, error } = useProducts();
+  const { data: products = [], isPending, error } = useProducts(searchText);
   if (isPending)
     return <p className="font-['Kanit'] text-center mt-20 ">Loading...</p>;
   if (error)

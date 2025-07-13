@@ -2,8 +2,9 @@ import searchIcon from "../assets/images/search.svg";
 import Menu from "../assets/images/menu.svg";
 import ProductCards from "../components/Home/ProductCards";
 import Categories from "../components/Home/Categories";
-
+import { useSearchStore } from "../store/searchStore";
 export default function Products() {
+  const { searchText, setSearchText } = useSearchStore();
   return (
     <div>
       <div className="flex flex-row items-center justify-center gap mt-50 sm:mt-30 mb-6">
@@ -14,6 +15,8 @@ export default function Products() {
           <input
             className="font-['Rubik'] text-xs border-1 border-cyan-950 p-1 rounded-sm  w-55 sm:w-70 pl-2 focus:outline-none"
             type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
             placeholder="search products"
           />
           <img

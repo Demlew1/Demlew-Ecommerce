@@ -2,14 +2,20 @@ import axios from "axios";
 import type { Product } from "../types/product";
 import type { Categories } from "../types/categories";
 import type { singleProduct } from "../types/singleProduct";
-export async function getAllProducts(): Promise<Product[]> {
+export async function getAllProducts(searchText: string): Promise<Product[]> {
   try {
     const response = await axios.get<Product[]>(
       "https://api.escuelajs.co/api/v1/products"
     );
-    return response.data;
+    const allProducts = response.data;
+
+    if (!searchText) return allProducts;
+
+    return allProducts.filter((product) =>
+      product.title.toLowerCase().includes(searchText.toLowerCase())
+    );
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new Error("Failed to fetch products");
   }
 }
