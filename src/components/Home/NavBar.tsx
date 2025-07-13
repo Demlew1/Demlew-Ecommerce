@@ -25,6 +25,12 @@ export default function NavBar() {
           >
             Products
           </Link>
+          <Link
+            to="/aboutus"
+            className="font-['Kanit'] text-cyan-950 border-b-2 border-transparent hover:border-cyan-950 transition duration-200"
+          >
+            About us
+          </Link>
         </div>
         <div className="flex items-center gap-6 sm:order-3">
           <Link

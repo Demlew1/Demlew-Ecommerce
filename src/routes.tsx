@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import SingleProduct from "./components/Home/SingleProduct";
 import SignUp from "./pages/SignUp";
 import SellProducts from "./pages/SellProducts";
+import AboutPage from "./pages/AboutPage";
 export const routesConfig: RouteObject[] = [
   {
     path: "/",
@@ -22,6 +23,10 @@ export const routesConfig: RouteObject[] = [
       {
         path: "/products/:id",
         element: <SingleProduct />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutPage />,
       },
     ],
   },
