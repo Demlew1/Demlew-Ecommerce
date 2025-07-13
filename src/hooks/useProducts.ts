@@ -3,8 +3,8 @@ import { getAllProducts, filterByCategory } from "../services/api";
 import type { Product } from "../types/product";
 
 export default function useProducts(
-  searchText: string,
-  categoryId: number | null
+  searchText: string = "",
+  categoryId: number | null = null
 ) {
   return useQuery<Product[]>({
     queryKey: ["products", searchText, categoryId],
