@@ -30,29 +30,51 @@ export default function Products() {
         <div className="flex flex-row items-center justify-center px-4">
           <img className="size-5 md:hidden" src={Menu} alt="menu" />
         </div>
-        <div className="flex flex-row gap-2 items-center justify-center">
-          <input
-            className="font-['Rubik'] text-xs border-1 border-cyan-950 p-1 rounded-sm w-55 sm:w-70 pl-2 focus:outline-none"
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Search products"
-          />
-          <img
-            className="size-6 p-1 rounded-full flex items-center justify-center border-1 border-emerald-900 cursor-pointer"
-            src={searchIcon}
-            alt="search"
+        <div className="flex flex-row gap-2 items-center justify-center relative">
+          <div className="relative">
+            <input
+              className="font-['Rubik'] text-sm border border-gray-300 p-2 pl-10 pr-8 rounded-lg w-55 sm:w-70 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all shadow-sm"
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Search products"
+            />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <img
+                className="size-4 text-gray-400"
+                src={searchIcon}
+                alt="search"
+              />
+            </div>
+            {inputValue && (
+              <button
+                onClick={handleClear}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <svg
+                  className="size-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            )}
+          </div>
+          <button
             onClick={handleSearch}
-          />
-          {inputValue && (
-            <button
-              onClick={handleClear}
-              className="text-xs text-cyan-900 border border-cyan-800 px-2 rounded-sm"
-            >
-              Clear
-            </button>
-          )}
+            className="bg-cyan-600 hover:bg-cyan-700 text-white p-2 rounded-lg flex items-center justify-center transition-colors shadow-sm"
+          >
+            <img className="size-4" src={searchIcon} alt="search" />
+          </button>
         </div>
       </div>
 
