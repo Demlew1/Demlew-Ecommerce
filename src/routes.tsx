@@ -7,6 +7,7 @@ import SingleProduct from "./components/Home/SingleProduct";
 import SignUp from "./pages/SignUp";
 import SellProducts from "./pages/SellProducts";
 import AboutPage from "./pages/AboutPage";
+import CartPage from "./pages/cartPage";
 export const routesConfig: RouteObject[] = [
   {
     path: "/",
@@ -27,6 +28,10 @@ export const routesConfig: RouteObject[] = [
       {
         path: "/aboutus",
         element: <AboutPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },

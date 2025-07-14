@@ -52,7 +52,7 @@ export default function NavBar() {
                 0
               </span>
             </div>
-            <div className="relative group">
+            <Link to="/cart" className="relative group">
               <img
                 src={cartImage}
                 alt="Cart"
@@ -61,7 +61,7 @@ export default function NavBar() {
               <span className="absolute -top-2 -right-3 bg-cyan-900 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
                 {cart.length}
               </span>
-            </div>
+            </Link>
             <div className="group">
               <img
                 src={account}
