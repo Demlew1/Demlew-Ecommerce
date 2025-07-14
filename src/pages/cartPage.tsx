@@ -48,7 +48,7 @@ export default function CartPage() {
           <div className="divide-y divide-gray-200">
             {cart.length === 0 ? (
               <div className="p-8 md:p-12 text-center">
-                <p className="text-gray-500 text-base md:text-lg">
+                <p className="text-gray-500 text-base font-['Rubik'] md:text-lg">
                   Your cart is empty
                 </p>
               </div>

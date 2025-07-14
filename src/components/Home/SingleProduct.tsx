@@ -5,12 +5,16 @@ import liked from "../../assets/images/liked.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useCartStore } from "../../store/cartStore";
+import { toast } from "react-toastify";
+
 export default function SingleProduct() {
+  const notify = () => toast.success("Successfully added!");
   const { addToCart } = useCartStore();
   const { id } = useParams<{ id: string }>();
   const productId = parseInt(id ?? "0");
   const { data: singleProduct, isPending, error } = useSingleProduct(productId);
   const [like, setLike] = useState<boolean>(false);
+
   if (isPending)
     return (
       <motion.div
@@ -45,9 +49,11 @@ export default function SingleProduct() {
       </motion.p>
     );
   }
+
   function likeProducts() {
     setLike(!like);
   }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -128,7 +134,10 @@ export default function SingleProduct() {
           </p>
         </motion.div>
         <motion.button
-          onClick={() => addToCart(singleProduct)}
+          onClick={() => {
+            addToCart(singleProduct);
+            notify();
+          }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="w-full py-3 px-6 rounded-xl font-medium text-white bg-cyan-900 hover:bg-cyan-800 shadow-md transition-all"

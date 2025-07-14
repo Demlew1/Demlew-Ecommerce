@@ -51,6 +51,12 @@ function Footer() {
           >
             Products
           </Link>
+          <Link
+            to="aboutus"
+            className="text-gray-100 duration-200 hover:text-gray-200 hover:font-medium text-sm"
+          >
+            About us
+          </Link>
         </div>
 
         <div className="flex flex-col space-y-2 items-center  md:items-start">
