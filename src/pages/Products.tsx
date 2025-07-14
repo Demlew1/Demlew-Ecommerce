@@ -12,7 +12,6 @@ export default function Products() {
   const handleSearch = () => {
     setSearchText(inputValue.trim());
   };
-
   const handleClear = () => {
     setInputValue("");
     clearSearchText();

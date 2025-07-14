@@ -4,7 +4,9 @@ import heart from "../../assets/images/heart.png";
 import liked from "../../assets/images/liked.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useCartStore } from "../../store/cartStore";
 export default function SingleProduct() {
+  const { addToCart } = useCartStore();
   const { id } = useParams<{ id: string }>();
   const productId = parseInt(id ?? "0");
   const { data: singleProduct, isPending, error } = useSingleProduct(productId);
@@ -126,6 +128,7 @@ export default function SingleProduct() {
           </p>
         </motion.div>
         <motion.button
+          onClick={() => addToCart(singleProduct)}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="w-full py-3 px-6 rounded-xl font-medium text-white bg-cyan-900 hover:bg-cyan-800 shadow-md transition-all"

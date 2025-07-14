@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import heart from "../../assets/images/heart.png";
-import cart from "../../assets/images/cart2.png";
+import cartImage from "../../assets/images/cart2.png";
 import account from "../../assets/images/account.png";
 import SignUpAd from "./SignUpAd";
+import { useCartStore } from "../../store/cartStore";
 export default function NavBar() {
+  const { cart } = useCartStore();
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       <SignUpAd />
@@ -52,12 +54,12 @@ export default function NavBar() {
             </div>
             <div className="relative group">
               <img
-                src={cart}
+                src={cartImage}
                 alt="Cart"
                 className="w-6 h-6 cursor-pointer transition-transform group-hover:scale-110"
               />
               <span className="absolute -top-2 -right-3 bg-cyan-900 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
-                0
+                {cart.length}
               </span>
             </div>
             <div className="group">

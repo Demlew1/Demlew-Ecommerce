@@ -22,12 +22,10 @@ export default function ProductCards() {
         {error.message}
       </p>
     );
-
   const productsWithImages = products.filter(
     (product) =>
       product.images && product.images.length > 0 && product.images[0]
   );
-
   return (
     <div className="flex flex-row justify-center px-4">
       <div className="flex flex-col gap-4 w-full max-w-7xl">
