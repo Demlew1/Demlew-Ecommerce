@@ -1,9 +1,11 @@
 import { useFavouriteStore } from "../store/favouriteStore";
 import { Trash2, Heart } from "lucide-react";
-
+import { useCartStore } from "../store/cartStore";
+import { toast } from "react-toastify";
 export default function FavouritesPage() {
+  const notify = () => toast.success("Successfully added!");
   const { favourites, removeFromFavourites } = useFavouriteStore();
-
+  const { addToCart } = useCartStore();
   if (favourites.length === 0) {
     return (
       <div className="font-['Rubik'] mt-50 sm:mt-30 flex flex-col items-center justify-center min-h-[60vh] gap-4 text-center p-4">
@@ -17,7 +19,6 @@ export default function FavouritesPage() {
       </div>
     );
   }
-
   return (
     <div className="font-['Rubik'] container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -60,7 +61,13 @@ export default function FavouritesPage() {
                 <span className="font-bold text-pink-900">
                   ${product.price}
                 </span>
-                <button className="text-sm bg-pink-900 text-white px-3 py-1 rounded hover:bg-pink-700 transition-colors">
+                <button
+                  onClick={() => {
+                    addToCart(product);
+                    notify();
+                  }}
+                  className="text-sm bg-pink-900 text-white px-3 py-1 rounded hover:bg-pink-700 transition-colors"
+                >
                   Add to Cart
                 </button>
               </div>
