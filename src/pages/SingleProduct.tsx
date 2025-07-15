@@ -1,14 +1,15 @@
 import { useParams } from "react-router-dom";
-import useSingleProduct from "../../hooks/useSingleProduct";
-import heart from "../../assets/images/heart.png";
-import liked from "../../assets/images/liked.svg";
+import useSingleProduct from "../hooks/useSingleProduct";
+import heart from "../assets/images/heart.png";
+import liked from "../assets/images/liked.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useCartStore } from "../../store/cartStore";
+import { useCartStore } from "../store/cartStore";
 import { toast } from "react-toastify";
-
+import { useFavouriteStore } from "../store/favouriteStore";
 export default function SingleProduct() {
   const notify = () => toast.success("Successfully added!");
+  const { addToFavourites, removeFromFavourites } = useFavouriteStore();
   const { addToCart } = useCartStore();
   const { id } = useParams<{ id: string }>();
   const productId = parseInt(id ?? "0");
@@ -51,7 +52,13 @@ export default function SingleProduct() {
   }
 
   function likeProducts() {
-    setLike(!like);
+    if (!singleProduct) return;
+    setLike((prev) => !prev);
+    if (!like) {
+      addToFavourites(singleProduct);
+    } else {
+      removeFromFavourites(singleProduct.id);
+    }
   }
 
   return (
@@ -59,7 +66,7 @@ export default function SingleProduct() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="font-['Rubik'] flex flex-col sm:flex-row gap-8 mt-10 items-center px-4 sm:px-8 lg:px-16 py-12 max-w-7xl mx-auto"
+      className="font-['Rubik'] flex flex-col  sm:flex-row gap-8 mt-40 sm:mt-30 sm:items-start items-center px-4 sm:px-8 lg:px-16 py-12 max-w-7xl mx-auto"
     >
       <motion.div
         whileHover={{ scale: 1.01 }}
