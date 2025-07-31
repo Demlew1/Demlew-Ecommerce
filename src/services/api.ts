@@ -8,9 +8,7 @@ export async function getAllProducts(searchText: string): Promise<Product[]> {
       "https://api.escuelajs.co/api/v1/products"
     );
     const allProducts = response.data;
-
     if (!searchText) return allProducts;
-
     return allProducts.filter((product) =>
       product.title.toLowerCase().includes(searchText.toLowerCase())
     );

@@ -3,7 +3,6 @@ import { FaEye, FaUser } from "react-icons/fa";
 export default function SignUpForm() {
   return (
     <form className="space-y-4">
-      {/* Name Field */}
       <div>
         <label
           htmlFor="name"
@@ -23,8 +22,6 @@ export default function SignUpForm() {
           <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
       </div>
-
-      {/* Email Field */}
       <div>
         <label
           htmlFor="email"
@@ -41,8 +38,6 @@ export default function SignUpForm() {
           required
         />
       </div>
-
-      {/* Password Field */}
       <div>
         <label
           htmlFor="password"
@@ -67,8 +62,6 @@ export default function SignUpForm() {
           </button>
         </div>
       </div>
-
-      {/* Avatar Upload (Styled as a button) */}
       <div>
         <label
           htmlFor="avatar"
@@ -93,8 +86,6 @@ export default function SignUpForm() {
           <span className="text-xs text-gray-500">No file chosen</span>
         </div>
       </div>
-
-      {/* Submit Button */}
       <button
         type="submit"
         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-950 hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"

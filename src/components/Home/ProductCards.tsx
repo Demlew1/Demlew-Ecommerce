@@ -1,4 +1,3 @@
-import Filter from "../../assets/images/filter.svg";
 import useProducts from "../../hooks/useProducts";
 import { useNavigate } from "react-router-dom";
 import { useSearchStore } from "../../store/searchStore";
@@ -29,19 +28,6 @@ export default function ProductCards() {
   return (
     <div className="flex flex-row justify-center px-4">
       <div className="flex flex-col gap-4 w-full max-w-7xl">
-        <div className="relative self-end">
-          <img
-            className="size-4 absolute top-1.5 left-3"
-            src={Filter}
-            alt="filter"
-          />
-          <select className="font-['Rubik'] text-xs border border-gray-300 w-40 focus:outline-none rounded-md pl-10 p-2 bg-white shadow-sm hover:border-cyan-700 transition-colors">
-            <option>Filter by</option>
-            <option>A-Z</option>
-            <option>expensive to low</option>
-          </select>
-        </div>
-
         {productsWithImages.length === 0 ? (
           <p className="font-['Rubik'] text-center text-gray-500 mt-10 text-lg">
             No products found

@@ -4,7 +4,6 @@ import { FaPhoneAlt } from "react-icons/fa";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import SocialLinks from "./SocialLinks";
-
 function Footer() {
   return (
     <footer className="bg-cyan-950  mt-10">
@@ -44,7 +43,6 @@ function Footer() {
           >
             Home
           </Link>
-
           <Link
             to="products"
             className="text-gray-100 duration-200 hover:text-gray-200 hover:font-medium text-sm"
@@ -58,7 +56,6 @@ function Footer() {
             About us
           </Link>
         </div>
-
         <div className="flex flex-col space-y-2 items-center  md:items-start">
           <h4 className="font-bold text-lg mb-2 text-gray-300">Follow US</h4>
           <SocialLinks />

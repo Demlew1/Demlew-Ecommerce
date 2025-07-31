@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-
 export default function Connect() {
   return (
     <section className="relative py-16 bg-gradient-to-br from-cyan-800 to-cyan-600">
@@ -8,7 +7,6 @@ export default function Connect() {
         <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-white"></div>
         <div className="absolute bottom-10 right-20 w-60 h-60 rounded-full bg-white"></div>
       </div>
-
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
