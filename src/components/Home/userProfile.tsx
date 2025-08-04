@@ -8,7 +8,6 @@ export default function UserProfile() {
   const { token, logout } = useAuthStore();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-
   const {
     data: user,
     isLoading,
