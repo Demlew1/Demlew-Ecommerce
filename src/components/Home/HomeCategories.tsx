@@ -6,16 +6,20 @@ export default function HomeCategories() {
       image: "src/assets/images/electronics.svg",
     },
     {
-      title: "Jewelery",
-      image: "src/assets/images/jewelery.svg",
+      title: "Miscalleneous",
+      image: "src/assets/images/miscel.svg",
     },
     {
-      title: "Men's",
+      title: "Shoes",
+      image: "src/assets/images/shoes.svg",
+    },
+    {
+      title: "Clothes",
       image: "src/assets/images/mensCloth.svg",
     },
     {
-      title: "Women's",
-      image: "src/assets/images/womenCloth.svg",
+      title: "Furniture",
+      image: "src/assets/images/furniture.svg",
     },
   ];
 
