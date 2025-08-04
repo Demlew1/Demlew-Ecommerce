@@ -5,9 +5,7 @@ import type { singleProduct } from "../types/singleProduct";
 const BASE_URL = "https://api.escuelajs.co/api/v1";
 export async function getAllProducts(searchText: string): Promise<Product[]> {
   try {
-    const response = await axios.get<Product[]>(
-      "https://api.escuelajs.co/api/v1/products"
-    );
+    const response = await axios.get<Product[]>(`${BASE_URL}`);
     const allProducts = response.data;
     if (!searchText) return allProducts;
     return allProducts.filter((product) =>
@@ -20,9 +18,7 @@ export async function getAllProducts(searchText: string): Promise<Product[]> {
 }
 export async function getCategories(): Promise<Categories[]> {
   try {
-    const response = await axios.get<Categories[]>(
-      "https://api.escuelajs.co/api/v1/categories"
-    );
+    const response = await axios.get<Categories[]>(`${BASE_URL}`);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -32,7 +28,7 @@ export async function getCategories(): Promise<Categories[]> {
 export async function getSingleProduct(id: number): Promise<singleProduct> {
   try {
     const response = await axios.get<singleProduct>(
-      `https://api.escuelajs.co/api/v1/products/${id}`
+      `${BASE_URL}/products/${id}`
     );
     return response.data;
   } catch (error) {
@@ -43,7 +39,7 @@ export async function getSingleProduct(id: number): Promise<singleProduct> {
 export async function filterByCategory(categoryId: number): Promise<Product[]> {
   try {
     const response = await axios.get<Product[]>(
-      `https://api.escuelajs.co/api/v1/categories/${categoryId}/products`
+      `${BASE_URL}/categories/${categoryId}/products`
     );
     return response.data;
   } catch (error) {
@@ -64,5 +60,20 @@ export async function postProduct(productData: {
   } catch (error) {
     console.error("Error posting product:", error);
     throw new Error("Failed to post product");
+  }
+}
+export async function loginUser(
+  email: string,
+  password: string
+): Promise<string> {
+  try {
+    const response = await axios.post(`${BASE_URL}/auth/login`, {
+      email,
+      password,
+    });
+    return response.data.access_token;
+  } catch (error: string) {
+    console.error("Login error:", error);
+    throw new Error(error.response?.data?.message || "Login failed");
   }
 }
