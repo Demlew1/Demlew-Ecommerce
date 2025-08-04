@@ -10,6 +10,7 @@ import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/cartPage";
 import FavouritesPage from "./pages/FavouritesPage";
 import ProfilePage from "./pages/ProfilePage";
+
 export const routesConfig: RouteObject[] = [
   {
     path: "/",

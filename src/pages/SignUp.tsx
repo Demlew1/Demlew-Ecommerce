@@ -1,5 +1,5 @@
 import Logo from "../components/Home/Logo";
-import SignUpForm from "../components/Home/signUpForm";
+import SignUpForm from "../components/Home/SignUpForm";
 import { Link } from "react-router-dom";
 function SignUp() {
   return (

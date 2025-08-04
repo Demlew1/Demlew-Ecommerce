@@ -22,8 +22,8 @@ export default function SignInForm() {
       toast.success("Login successful!");
 
       navigate("/");
-    } catch (error: any) {
-      const message = error.message || "Login failed";
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Login failed";
       toast.error(message);
     }
   };
