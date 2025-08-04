@@ -1,27 +1,33 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { loginUser } from "../../services/api"; //
+import { loginUser } from "../../services/api";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
   const { setToken } = useAuthStore();
   const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMsg("");
+
     try {
       const token = await loginUser(email, password);
       setToken(token);
+
+      toast.success("Login successful!");
+
       navigate("/");
     } catch (error: any) {
-      setErrorMsg(error.message || "Login failed");
+      const message = error.message || "Login failed";
+      toast.error(message);
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
@@ -35,7 +41,7 @@ export default function SignInForm() {
           type="email"
           id="email"
           name="email"
-          className="w-full font-['Montserrat'] px-4 py-2 border border-gray-300 rounded-md text-[10px] sm:text-xs focus:outline-none "
+          className="w-full font-['Montserrat'] px-4 py-2 border border-gray-300 rounded-md text-[10px] sm:text-xs focus:outline-none"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -89,9 +95,7 @@ export default function SignInForm() {
           </label>
         </div>
       </div>
-      {errorMsg && (
-        <p className="text-red-500 text-xs text-center">{errorMsg}</p>
-      )}
+
       <button
         type="submit"
         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-950 hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"

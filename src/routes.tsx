@@ -9,6 +9,7 @@ import SellProducts from "./pages/SellProducts";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/cartPage";
 import FavouritesPage from "./pages/FavouritesPage";
+import ProfilePage from "./pages/ProfilePage";
 export const routesConfig: RouteObject[] = [
   {
     path: "/",
@@ -33,6 +34,10 @@ export const routesConfig: RouteObject[] = [
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
       },
       { path: "/favourites", element: <FavouritesPage /> },
     ],

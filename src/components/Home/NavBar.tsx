@@ -64,13 +64,13 @@ export default function NavBar() {
                 {cart.length}
               </span>
             </Link>
-            <div className="group">
+            <Link to="/profile" className="group">
               <img
                 src={account}
                 alt="Account"
                 className="size-6 md:size-6 sm:size-5 cursor-pointer transition-transform group-hover:scale-110"
               />
-            </div>
+            </Link>
           </div>
         </div>
       </nav>

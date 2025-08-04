@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
 import portpic from "../../assets/images/portpic.jpg";
-
 export default function AboutHero() {
   return (
     <section className="relative  py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-cyan-100/30 blur-3xl -z-10"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-cyan-100/20 blur-3xl -z-10"></div>
-
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         <motion.div
           className="lg:w-1/2 text-center lg:text-left"
@@ -15,7 +13,7 @@ export default function AboutHero() {
           transition={{ duration: 0.8 }}
         >
           <motion.p
-            className="text-lg font-medium text-cyan-600 mb-3 font-['Montserrat']"
+            className="text-lg font-medium mt-10 text-cyan-600 mb-3 font-['Montserrat']"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -43,7 +41,6 @@ export default function AboutHero() {
             things that look good while working exactly how they should.
           </motion.p>
         </motion.div>
-
         <motion.div
           className="lg:w-1/2 flex justify-center"
           initial={{ opacity: 0, x: 40 }}

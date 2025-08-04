@@ -94,3 +94,16 @@ export async function signUpUser(userData: {
     throw new Error(error.response?.data?.message || "Signup failed");
   }
 }
+export async function getUserProfile(token: string) {
+  try {
+    const response = await axios.get(`${BASE_URL}/auth/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    console.error("Profile fetch error:", error);
+    throw new Error(error.response?.data?.message || "Failed to fetch profile");
+  }
+}

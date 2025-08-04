@@ -13,7 +13,6 @@ export default function SignUpForm() {
     password: "",
     avatar: "",
   });
-
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
