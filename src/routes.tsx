@@ -10,49 +10,24 @@ import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/cartPage";
 import FavouritesPage from "./pages/FavouritesPage";
 import ProfilePage from "./pages/ProfilePage";
-
+import ErrorPage from "./components/Home/ErrorPage";
 export const routesConfig: RouteObject[] = [
   {
     path: "/",
     element: <AppLayout />,
     children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "products",
-        element: <Products />,
-      },
-      {
-        path: "/products/:id",
-        element: <SingleProduct />,
-      },
-      {
-        path: "/aboutus",
-        element: <AboutPage />,
-      },
-      {
-        path: "/cart",
-        element: <CartPage />,
-      },
-      {
-        path: "/profile",
-        element: <ProfilePage />,
-      },
-      { path: "/favourites", element: <FavouritesPage /> },
+      { index: true, element: <HomePage /> },
+      { path: "products", element: <Products /> },
+      { path: "products/:id", element: <SingleProduct /> },
+      { path: "aboutus", element: <AboutPage /> },
+      { path: "cart", element: <CartPage /> },
+      { path: "profile", element: <ProfilePage /> },
+      { path: "favourites", element: <FavouritesPage /> },
+      { path: "*", element: <ErrorPage /> },
     ],
   },
-  {
-    path: "signin",
-    element: <SignIn />,
-  },
-  {
-    path: "signup",
-    element: <SignUp />,
-  },
-  {
-    path: "/sell",
-    element: <SellProducts />,
-  },
+  { path: "signin", element: <SignIn /> },
+  { path: "signup", element: <SignUp /> },
+  { path: "sell", element: <SellProducts /> },
+  { path: "*", element: <ErrorPage /> },
 ];

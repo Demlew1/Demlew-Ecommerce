@@ -7,7 +7,7 @@ export default function HomeCategories() {
 
   const categories = [
     {
-      id: 1,
+      id: 2,
       title: "Electronics",
       image: "src/assets/images/electronics.svg",
     },
@@ -22,7 +22,7 @@ export default function HomeCategories() {
       image: "src/assets/images/shoes.svg",
     },
     {
-      id: 11,
+      id: 1,
       title: "Clothes",
       image: "src/assets/images/mensCloth.svg",
     },

@@ -1,11 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuthStore } from "../../store/useAuthStore";
 import { getUserProfile } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function UserProfile() {
   const { token, logout } = useAuthStore();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
   const {
     data: user,
     isLoading,
@@ -13,14 +16,26 @@ export default function UserProfile() {
   } = useQuery({
     queryKey: ["userProfile", token],
     queryFn: () => getUserProfile(token!),
-    enabled: !!token,
+    enabled: !!token, // 👈 This ensures query only runs if token exists
     retry: false,
   });
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    queryClient.clear();
+    toast.success("Logged out successfully!");
+    navigate("/signin");
   };
+
+  if (!token) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <p className="font-['Kanit'] text-gray-500 text-center text-lg bg-gray-100 p-6 rounded-md">
+          No user is currently logged in.
+        </p>
+      </div>
+    );
+  }
 
   if (error)
     return (
@@ -29,7 +44,7 @@ export default function UserProfile() {
       </p>
     );
 
-  if (isLoading)
+  if (isLoading || !user)
     return (
       <div className="flex justify-center items-center h-64">
         <div className="h-12 w-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin" />
@@ -37,12 +52,12 @@ export default function UserProfile() {
     );
 
   return (
-    <div className="max-w-sm mx-auto mt-8 bg-white rounded-xl shadow-md overflow-hidden border border-cyan-200">
+    <div className="max-w-md mx-auto mt-24 sm:mt-28 bg-white rounded-xl shadow-md overflow-hidden border border-cyan-200">
       <div className="h-32 bg-cyan-600 relative">
         <img
           src={user.avatar}
           alt={user.name}
-          className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 h-24 w-24 rounded-full border-4 border-white shadow-md"
+          className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 h-24 w-24 rounded-full border-4 border-white shadow-md object-cover"
         />
       </div>
 
