@@ -2,12 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "vite.config.ts",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist",
-        "cleanDistDir": true
-      }
+      "src": "vercel-build.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
