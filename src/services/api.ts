@@ -2,6 +2,7 @@ import axios from "axios";
 import type { Product } from "../types/product";
 import type { Categories } from "../types/categories";
 import type { singleProduct } from "../types/singleProduct";
+const BASE_URL = "https://api.escuelajs.co/api/v1";
 export async function getAllProducts(searchText: string): Promise<Product[]> {
   try {
     const response = await axios.get<Product[]>(
@@ -48,5 +49,20 @@ export async function filterByCategory(categoryId: number): Promise<Product[]> {
   } catch (error) {
     console.log(error);
     throw new Error(`Failed to fetch products for category ${categoryId}`);
+  }
+}
+export async function postProduct(productData: {
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  images: string[];
+}) {
+  try {
+    const response = await axios.post(`${BASE_URL}/products`, productData);
+    return response.data;
+  } catch (error) {
+    console.error("Error posting product:", error);
+    throw new Error("Failed to post product");
   }
 }

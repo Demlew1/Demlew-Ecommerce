@@ -29,11 +29,9 @@ export default function ProductForm({
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="e.g. Premium Leather Wallet"
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cyan-500"
+          className="w-full border border-gray-300 rounded-lg px-4 py-2"
         />
       </div>
-
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Price ($)
@@ -42,13 +40,10 @@ export default function ProductForm({
           type="number"
           value={price}
           onChange={(e) => setPrice(Number(e.target.value))}
-          placeholder="e.g. 49.99"
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cyan-500"
+          className="w-full border border-gray-300 rounded-lg px-4 py-2"
           min="0"
-          step="0.01"
         />
       </div>
-
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Description
@@ -57,11 +52,9 @@ export default function ProductForm({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={4}
-          placeholder="Describe your product in detail..."
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cyan-500"
+          className="w-full border border-gray-300 rounded-lg px-4 py-2"
         />
       </div>
-
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Category
@@ -69,7 +62,7 @@ export default function ProductForm({
         <select
           value={categoryId}
           onChange={(e) => setCategoryId(Number(e.target.value))}
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cyan-500"
+          className="w-full border border-gray-300 rounded-lg px-4 py-2"
         >
           <option value={1}>Clothes</option>
           <option value={2}>Electronics</option>

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import axios from "axios";
-import ProductForm from "../components/Home/ProductForm";
-import ImagePreviewGrid from "../components/Home/ImagePreviewGrid";
-import UploadInput from "../components/Home/uploadInput";
 import { FaSpinner } from "react-icons/fa";
-
+import ProductForm from "../components/Home/ProductForm";
+import UploadInput from "../components/Home/uploadInput";
+import ImagePreviewGrid from "../components/Home/ImagePreviewGrid";
+import { uploadToCloudinary } from "../utils/cloudinary";
+import { postProduct } from "../services/api";
 export default function ProductUploader() {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState<number | "">("");
@@ -21,32 +21,27 @@ export default function ProductUploader() {
     if (!files) return;
     const fileArray = Array.from(files);
     const previewUrls = fileArray.map((file) => URL.createObjectURL(file));
-
     setPreviewImages((prev) => [...prev, ...previewUrls]);
     setImageFiles((prev) => [...prev, ...fileArray]);
     setError("");
   };
-
   const removeImage = (index: number) => {
     setPreviewImages((prev) => prev.filter((_, i) => i !== index));
     setImageFiles((prev) => prev.filter((_, i) => i !== index));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!title || !price || !description || imageFiles.length === 0) {
       setError("Please fill in all fields and upload at least one image.");
       return;
     }
-
     try {
       setLoading(true);
       setError("");
       setSuccess(false);
-
-      const imageUrls = previewImages;
-
+      const imageUrls = await Promise.all(
+        imageFiles.map((file) => uploadToCloudinary(file))
+      );
       const payload = {
         title,
         price: Number(price),
@@ -55,9 +50,8 @@ export default function ProductUploader() {
         images: imageUrls,
       };
 
-      await axios.post("https://api.escuelajs.co/api/v1/products", payload);
+      await postProduct(payload);
       setSuccess(true);
-
       setTitle("");
       setPrice("");
       setDescription("");
@@ -105,7 +99,6 @@ export default function ProductUploader() {
       />
 
       <ImagePreviewGrid images={previewImages} onRemove={removeImage} />
-
       <UploadInput onChange={handleImageChange} />
 
       <button
