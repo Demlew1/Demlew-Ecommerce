@@ -72,8 +72,25 @@ export async function loginUser(
       password,
     });
     return response.data.access_token;
-  } catch (error: string) {
+  } catch (error: any) {
     console.error("Login error:", error);
     throw new Error(error.response?.data?.message || "Login failed");
+  }
+}
+export async function signUpUser(userData: {
+  name: string;
+  email: string;
+  password: string;
+  avatar: string;
+}) {
+  try {
+    const response = await axios.post(`${BASE_URL}/users/`, {
+      ...userData,
+      role: "customer",
+    });
+    return response.data;
+  } catch (error: any) {
+    console.error("Signup error:", error);
+    throw new Error(error.response?.data?.message || "Signup failed");
   }
 }
