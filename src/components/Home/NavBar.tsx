@@ -6,9 +6,53 @@ import account from "../../assets/images/account.png";
 import SignUpAd from "./SignUpAd";
 import { useCartStore } from "../../store/cartStore";
 import { useFavouriteStore } from "../../store/favouriteStore";
+import { useAuthStore } from "../../store/useAuthStore";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+
 export default function NavBar() {
   const { favourites } = useFavouriteStore();
   const { cart } = useCartStore();
+  const { token, logout } = useAuthStore();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const profileMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(event.target as Node)
+      ) {
+        setShowProfileMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+    queryClient.clear();
+    setShowProfileMenu(false);
+    toast.success("Logged out successfully!");
+    navigate("/signin");
+  };
+
+  const handleProfileClick = () => {
+    if (token) {
+      setShowProfileMenu(!showProfileMenu);
+    } else {
+      navigate("/signin");
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       <SignUpAd />
@@ -64,13 +108,36 @@ export default function NavBar() {
                 {cart.length}
               </span>
             </Link>
-            <Link to="/profile" className="group">
-              <img
-                src={account}
-                alt="Account"
-                className="size-6 md:size-6 sm:size-5 cursor-pointer transition-transform group-hover:scale-110"
-              />
-            </Link>
+            <div className="relative">
+              <button onClick={handleProfileClick} className="group">
+                <img
+                  src={account}
+                  alt="Account"
+                  className="size-6 md:size-6 sm:size-5 cursor-pointer transition-transform group-hover:scale-110"
+                />
+              </button>
+
+              {showProfileMenu && token && (
+                <div
+                  className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200"
+                  ref={profileMenuRef}
+                >
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-['Kanit']"
+                    onClick={() => setShowProfileMenu(false)}
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 font-['Kanit']"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>

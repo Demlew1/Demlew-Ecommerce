@@ -21,6 +21,8 @@ export default function useProducts(
         return products;
       }
     },
-    staleTime: 60 * 1000,
+    staleTime: 2 * 60 * 1000, // 2 minutes
+    retry: 3,
+    retryDelay: 1000,
   });
 }

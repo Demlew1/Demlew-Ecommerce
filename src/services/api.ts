@@ -5,23 +5,27 @@ import type { singleProduct } from "../types/singleProduct";
 const BASE_URL = "https://api.escuelajs.co/api/v1";
 export async function getAllProducts(searchText: string): Promise<Product[]> {
   try {
-    const response = await axios.get<Product[]>(`${BASE_URL}`);
+    console.log("Fetching products from:", `${BASE_URL}/products`);
+    const response = await axios.get<Product[]>(`${BASE_URL}/products`);
+    console.log("Products response:", response.data.length, "products");
     const allProducts = response.data;
     if (!searchText) return allProducts;
     return allProducts.filter((product) =>
       product.title.toLowerCase().includes(searchText.toLowerCase())
     );
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching products:", error);
     throw new Error("Failed to fetch products");
   }
 }
 export async function getCategories(): Promise<Categories[]> {
   try {
-    const response = await axios.get<Categories[]>(`${BASE_URL}`);
+    console.log("Fetching categories from:", `${BASE_URL}/categories`);
+    const response = await axios.get<Categories[]>(`${BASE_URL}/categories`);
+    console.log("Categories response:", response.data.length, "categories");
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching categories:", error);
     throw new Error("failed to fetch categories");
   }
 }
@@ -72,9 +76,11 @@ export async function loginUser(
       password,
     });
     return response.data.access_token;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Login error:", error);
-    throw new Error(error.response?.data?.message || "Login failed");
+    const errorMessage =
+      error instanceof Error ? error.message : "Login failed";
+    throw new Error(errorMessage);
   }
 }
 export async function signUpUser(userData: {
@@ -89,9 +95,11 @@ export async function signUpUser(userData: {
       role: "customer",
     });
     return response.data;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Signup error:", error);
-    throw new Error(error.response?.data?.message || "Signup failed");
+    const errorMessage =
+      error instanceof Error ? error.message : "Signup failed";
+    throw new Error(errorMessage);
   }
 }
 export async function getUserProfile(token: string) {
@@ -102,8 +110,10 @@ export async function getUserProfile(token: string) {
       },
     });
     return response.data;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Profile fetch error:", error);
-    throw new Error(error.response?.data?.message || "Failed to fetch profile");
+    const errorMessage =
+      error instanceof Error ? error.message : "Failed to fetch profile";
+    throw new Error(errorMessage);
   }
 }

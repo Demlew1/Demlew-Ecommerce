@@ -4,7 +4,7 @@ import HomePromotion from "../components/Home/HomePromotion";
 import HomeProducts from "../components/Home/HomeProducts";
 import HomeCategories from "../components/Home/HomeCategories";
 import Testimonials from "../components/Home/Testimonials";
-// import Footer from "../components/Home/Footer";
+
 export default function HomePage() {
   return (
     <div>
@@ -14,7 +14,6 @@ export default function HomePage() {
       <HomeCategories />
       <HomePromotion />
       <Testimonials />
-      {/* <Footer /> */}
     </div>
   );
 }
