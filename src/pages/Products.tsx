@@ -1,6 +1,5 @@
 import { useState } from "react";
 import searchIcon from "../assets/images/search.svg";
-import Menu from "../assets/images/menu.svg";
 import ProductCards from "../components/Home/ProductCards";
 import Categories from "../components/Home/Categories";
 import { useSearchStore } from "../store/searchStore";
@@ -24,15 +23,12 @@ export default function Products() {
   };
 
   return (
-    <div>
-      <div className="flex flex-row items-center justify-center gap mt-50 sm:mt-30 mb-6">
-        <div className="flex flex-row items-center justify-center px-4">
-          <img className="size-5 md:hidden" src={Menu} alt="menu" />
-        </div>
-        <div className="flex flex-row gap-2 items-center justify-center relative">
-          <div className="relative">
+    <div className="min-h-screen mt-20 md:mt-10 pt-20">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 sm:mt-12 mb-6 px-4">
+        <div className="flex flex-row gap-2 items-center justify-center relative w-full max-w-md">
+          <div className="relative flex-1">
             <input
-              className="font-['Rubik'] text-sm border border-gray-300 p-2 pl-10 pr-8 rounded-lg w-55 sm:w-70 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all shadow-sm"
+              className="font-['Rubik'] text-sm border border-gray-300 p-2 pl-10 pr-8 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all shadow-sm"
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
@@ -77,7 +73,7 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="flex flex-row gap-4 xl:gap-2">
+      <div className="flex flex-col lg:flex-row gap-4 xl:gap-2 px-4">
         <Categories />
         <ProductCards />
       </div>

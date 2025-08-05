@@ -4,6 +4,7 @@ import heart from "../../assets/images/heart.png";
 import cartImage from "../../assets/images/cart2.png";
 import account from "../../assets/images/account.png";
 import SignUpAd from "./SignUpAd";
+import CategoryMenu from "./CategoryMenu";
 import { useCartStore } from "../../store/cartStore";
 import { useFavouriteStore } from "../../store/favouriteStore";
 import { useAuthStore } from "../../store/useAuthStore";
@@ -56,17 +57,18 @@ export default function NavBar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       <SignUpAd />
-      <nav className="   bg-white shadow-md px-4 py-4 sm:px-8 lg:px-20 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <nav className="bg-white shadow-md px-4 py-4 sm:px-8 lg:px-20 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex justify-center sm:justify-start">
           <Logo />
         </div>
-        <div className="flex gap-8 sm:gap-4 md:gap-8  sm:order-2 text-base">
+        <div className="flex gap-4 sm:gap-4 md:gap-8 sm:order-2 text-base">
           <Link
             to="/"
             className="font-['Kanit'] text-cyan-950 border-b-2 sm:text-xs md:text-sm border-transparent hover:border-cyan-950 transition duration-200"
           >
             Home
           </Link>
+          <CategoryMenu />
           <Link
             to="/products"
             className="font-['Kanit'] text-cyan-950 border-b-2 sm:text-xs md:text-sm border-transparent hover:border-cyan-950 transition duration-200"
@@ -92,7 +94,7 @@ export default function NavBar() {
               <img
                 src={heart}
                 alt="Wishlist"
-                className="size-6 sm:size-5   md:size-6 cursor-pointer transition-transform group-hover:scale-110"
+                className="size-6 sm:size-5 md:size-6 cursor-pointer transition-transform group-hover:scale-110"
               />
               <span className="absolute -top-2 -right-3 bg-amber-900 text-white text-[10px] size-5 md:size-5 sm:size-4 flex items-center justify-center rounded-full">
                 {favourites.length}

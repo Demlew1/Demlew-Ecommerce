@@ -1,5 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useFilterStore } from "../../store/filterStore";
+import electronicsIcon from "../../assets/images/electronics.svg";
+import miscelIcon from "../../assets/images/miscel.svg";
+import shoesIcon from "../../assets/images/shoes.svg";
+import mensClothIcon from "../../assets/images/mensCloth.svg";
+import furnitureIcon from "../../assets/images/furniture.svg";
 
 export default function HomeCategories() {
   const navigate = useNavigate();
@@ -9,27 +14,27 @@ export default function HomeCategories() {
     {
       id: 2,
       title: "Electronics",
-      image: "src/assets/images/electronics.svg",
+      image: electronicsIcon,
     },
     {
       id: 5,
       title: "Miscellaneous",
-      image: "src/assets/images/miscel.svg",
+      image: miscelIcon,
     },
     {
       id: 4,
       title: "Shoes",
-      image: "src/assets/images/shoes.svg",
+      image: shoesIcon,
     },
     {
       id: 1,
       title: "Clothes",
-      image: "src/assets/images/mensCloth.svg",
+      image: mensClothIcon,
     },
     {
       id: 3,
       title: "Furniture",
-      image: "src/assets/images/furniture.svg",
+      image: furnitureIcon,
     },
   ];
 
@@ -50,7 +55,7 @@ export default function HomeCategories() {
             onClick={() => handleCategoryClick(category.id)}
             className="flex flex-col gap-1 mt-2 xl:mt-4 items-center hover:scale-105 transition-transform"
           >
-            <div className="size-30 px-6 p-4 border  rounded-md flex items-center justify-center">
+            <div className="size-30 px-6 p-4 border rounded-md flex items-center justify-center">
               <img
                 src={category.image}
                 alt={category.title}

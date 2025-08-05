@@ -37,11 +37,11 @@ export default function ProductCards() {
             No products found
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 mt-4 justify-items-center">
             {productsWithImages.map((product) => (
               <div
                 key={product.id}
-                className="card bg-white shadow-md border-1 border-cyan-900 rounded-lg overflow-hidden font-['Rubik'] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full"
+                className="card bg-white shadow-md border-1 border-cyan-900 rounded-lg overflow-hidden font-['Rubik'] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full w-full max-w-64"
               >
                 <figure className="relative pt-[100%] overflow-hidden">
                   <img
@@ -60,16 +60,16 @@ export default function ProductCards() {
                       {product.category.name}
                     </span>
                   )}
-                  <h2 className="card-title text-gray-900 text-lg font-medium mb-2 line-clamp-2">
+                  <h2 className="card-title text-gray-900 text-sm sm:text-lg font-medium mb-2 line-clamp-2">
                     {product.title}
                   </h2>
                   <div className="mt-auto">
-                    <p className="text-lg font-bold text-cyan-900 mb-4">
+                    <p className="text-base sm:text-lg font-bold text-cyan-900 mb-4">
                       ${product.price}
                     </p>
                     <button
                       onClick={() => navigate(`/products/${product.id}`)}
-                      className="btn w-full bg-cyan-900 text-white py-2 px-4 rounded-md hover:bg-cyan-800 transition-colors border-none text-sm font-medium"
+                      className="btn w-full bg-cyan-900 text-white py-2 px-4 rounded-md hover:bg-cyan-800 transition-colors border-none text-xs sm:text-sm font-medium"
                     >
                       View Details
                     </button>

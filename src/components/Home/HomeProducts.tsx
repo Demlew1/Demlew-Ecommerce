@@ -4,11 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import useProducts from "../../hooks/useProducts";
 import type { Variants, Transition } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+
 export default function HomeProducts() {
   const { data: products = [], isPending, error } = useProducts();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
   const navigate = useNavigate();
+
   if (isPending)
     return <p className="font-['Kanit'] text-center mt-20">Loading...</p>;
   if (error)
@@ -18,8 +20,19 @@ export default function HomeProducts() {
       </p>
     );
 
-  const visibleProducts = products.slice(currentIndex, currentIndex + 3);
-  const remainingProducts: number = 3 - visibleProducts.length;
+  // For mobile, show 1 product, for tablet 2, for desktop 3
+  const getVisibleCount = () => {
+    if (window.innerWidth < 640) return 1; // mobile
+    if (window.innerWidth < 1024) return 2; // tablet
+    return 3; // desktop
+  };
+
+  const visibleCount = getVisibleCount();
+  const visibleProducts = products.slice(
+    currentIndex,
+    currentIndex + visibleCount
+  );
+  const remainingProducts: number = visibleCount - visibleProducts.length;
   if (remainingProducts > 0) {
     visibleProducts.push(...products.slice(0, remainingProducts));
   }
@@ -27,16 +40,16 @@ export default function HomeProducts() {
   const nextProducts = () => {
     setDirection(1);
     setCurrentIndex((prevIndex: number) =>
-      prevIndex + 3 >= products.length ? 0 : prevIndex + 3
+      prevIndex + visibleCount >= products.length ? 0 : prevIndex + visibleCount
     );
   };
 
   function prevProducts(): void {
     setDirection(-1);
     setCurrentIndex((prevIndex: number) =>
-      prevIndex - 3 < 0
-        ? products.length - (products.length % 3 || 3)
-        : prevIndex - 3
+      prevIndex - visibleCount < 0
+        ? products.length - (products.length % visibleCount || visibleCount)
+        : prevIndex - visibleCount
     );
   }
 
@@ -95,22 +108,27 @@ export default function HomeProducts() {
                   animate="animate"
                   exit="exit"
                   layout
-                  className="card bg-base-100 flex-shrink-0 w-48 sm:w-56 md:w-60 shadow-sm font-['Rubik'] flex flex-col gap-2 pb-2 border-1 border-cyan-950 rounded-lg"
+                  className="card bg-base-100 flex-shrink-0 w-full max-w-48 sm:w-56 md:w-60 shadow-sm font-['Rubik'] flex flex-col gap-2 pb-2 border-1 border-cyan-950 rounded-lg"
                 >
                   <figure className="">
                     <motion.img
                       src={product.images[0]}
                       alt={product.title}
-                      className="w-full object-contain rounded-t-md"
+                      className="w-full h-48 object-contain rounded-t-md"
                       whileHover={{ scale: 1.05 }}
                     />
                   </figure>
-                  <div className="card-body items-center text-center flex flex-col gap-3 flex-1">
-                    <p className="text-sm text-red-800">{product.price}$</p>
+                  <div className="card-body items-center text-center flex flex-col gap-3 flex-1 p-4">
+                    <h3 className="font-semibold text-sm text-gray-800 line-clamp-2">
+                      {product.title}
+                    </h3>
+                    <p className="text-sm text-red-800 font-bold">
+                      {product.price}$
+                    </p>
                     <div className="card-actions">
                       <motion.button
                         onClick={() => navigate(`products/${product.id}`)}
-                        className="btn btn-primary bg-cyan-950 text-cyan-50 p-2 w-32 md:w-40 border-1 border-cyan-950 cursor-pointer hover:border-1 hover:border-cyan-950 hover:text-cyan-950 hover:bg-white text-xs md:text-sm"
+                        className="btn btn-primary bg-cyan-950 text-cyan-50 p-2 w-full max-w-32 md:w-40 border-1 border-cyan-950 cursor-pointer hover:border-1 hover:border-cyan-950 hover:text-cyan-950 hover:bg-white text-xs md:text-sm"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
