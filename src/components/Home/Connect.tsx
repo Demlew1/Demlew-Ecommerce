@@ -40,12 +40,12 @@ export default function Connect() {
               Email
             </h3>
             <p className="text-cyan-100 text-sm font-['Montserrat']">
-              demtse.yibabe@example.com
+              demtse.yibabe@gmail.com
             </p>
           </motion.a>
 
           <motion.a
-            href="https://linkedin.com/in/yourprofile"
+            href="https://linkedin.com/in/demtse-yibabe"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
